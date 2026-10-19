@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First 120 Days: sales onboarding demonstration</title>
+  <meta name="description" content="A demonstration prototype of a competency-based sales onboarding and manager enablement experience. All content is fictional.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#/guide">
+        <span class="wordmark-name">First 120 Days</span>
+        <span class="wordmark-sub">Sales onboarding and manager enablement</span>
+      </a>
+      <div class="role-switch" role="group" aria-label="View as">
+        <button type="button" class="role-btn" data-role="employee" aria-pressed="true">Sales Employee</button>
+        <button type="button" class="role-btn" data-role="manager" aria-pressed="false">Sales Manager</button>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Main">
+      <ul id="nav-list"></ul>
+    </nav>
+  </header>
+
+  <div class="demo-notice" id="demo-notice">
+    <p><strong>Demonstration prototype.</strong> All people, companies and records are fictional. Progress is saved only in this browser.</p>
+  </div>
+
+  <main id="main" tabindex="-1"></main>
+
+  <div id="live" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <footer class="site-footer">
+    <p>Demonstration prototype for portfolio review. Not a production system and not an official framework of any company.</p>
+    <p><a href="#/guide/controls" id="footer-controls">Demonstration controls</a></p>
+  </footer>
+
+  <dialog id="reset-dialog" aria-labelledby="reset-title">
+    <form method="dialog">
+      <h2 id="reset-title">Reset demo data?</h2>
+      <p>Choose how to reset. This only affects progress saved in this browser.</p>
+      <div class="dialog-actions">
+        <button type="submit" value="sample" class="btn btn-primary">Restore sample progress</button>
+        <button type="submit" value="blank" class="btn">Clear all progress</button>
+        <button type="submit" value="cancel" class="btn btn-quiet">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript><p class="noscript">This prototype needs JavaScript to run.</p></noscript>
+  <script src="assets/content.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
