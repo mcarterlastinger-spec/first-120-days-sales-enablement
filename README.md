@@ -2,7 +2,7 @@
 
 A working prototype of a competency-based onboarding experience for new sales employees and their managers. It is a portfolio demonstration of human-directed instructional design: I designed and directed it, and developed it with Claude AI. The design was informed by a historical professional onboarding framework, adapted and sanitized for demonstration purposes.
 
-**Status:** Release candidate 3, awaiting the designer's approval. Not yet published, not production software, and not an official learning program of any company. All people, companies, customers, products and records are fictional.
+**Status**: Release Candidate 3 approved and published as an interactive portfolio demonstration. Not production software or an official learning program of any company. All people, companies, customers, products, and records are fictional.
 
 ## Run it locally
 
