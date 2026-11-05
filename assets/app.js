@@ -820,16 +820,90 @@
         };
       }
     }
-    if (nextStep) {
+   // Additional guidance for both learning pathways
+    if (p.name === "guide" || p.name === "about") {
+      nextStep = {
+        text: "Choose your role to explore the corresponding onboarding and manager enablement pathway.",
+        href: "#/home",
+        label: "Open Learning Pathway"
+      };
+    } else if (p.name === "competencies") {
+      nextStep = {
+        text: "Select a competency to examine its indicators, supporting activities, evidence, and developmental rating.",
+        href: null
+      };
+    } else if (p.name === "competency") {
+      nextStep = {
+        text: state.role === "manager"
+          ? "Review the available evidence, add observations as appropriate, and record a developmental rating when the evidence requirements are met."
+          : "Review the indicators and related activities. Add relevant work products or reflections as evidence of your development.",
+        href: "#/competencies",
+        label: "Return to Competencies"
+      };
+    } else if (p.name === "practice") {
+      var sc = state.scenario;
+
+      if (sc.phase === "intro") {
+        nextStep = {
+          text: "Read the customer situation and select Start the scenario to begin your negotiation practice.",
+          href: null
+        };
+      } else if (sc.phase === "decide") {
+        nextStep = {
+          text: "Choose your response, optionally explain your reasoning, and select Confirm choice to receive feedback.",
+          href: null
+        };
+      } else if (sc.phase === "result") {
+        nextStep = {
+          text: "Review the consequences and feedback. Continue to the next decision, or try a different choice.",
+          href: null
+        };
+      } else if (sc.phase === "end") {
+        nextStep = sc.completed ? {
+          text: "Your completed scenario and reflection are saved as developmental evidence. Review the Negotiation & Agreement competency.",
+          href: "#/competency/PC-07",
+          label: "Review Negotiation Competency"
+        } : {
+          text: "Review your negotiation outcome and complete all three reflection prompts. Save your reflection to share it with your manager.",
+          href: null
+        };
+      }
+    } else if (p.name === "debrief") {
+      nextStep = !state.scenario.shared ? {
+        text: "The employee must complete and share the negotiation reflection before a manager debrief can take place.",
+        href: null
+      } : state.scenario.debriefSaved ? {
+        text: "Your coaching notes are saved. Review the supporting evidence before recording a developmental rating.",
+        href: "#/competency/PC-07",
+        label: "Review Negotiation Competency"
+      } : {
+        text: "Review the employee's decisions and reflection, conduct the coaching conversation, and save your coaching notes.",
+        href: null
+      };
+    } else if (p.name === "support") {
+      nextStep = {
+        text: "Search or filter the available resources, then open a job aid, template, or primer to review its contents.",
+        href: null
+      };
+    } else if (p.name === "resource") {
+      nextStep = {
+        text: "Use this reference as needed, then return to Performance Support to explore other resources.",
+        href: "#/support",
+        label: "Return to Performance Support"
+      };
+    }
+     if (nextStep) {
       var nextPanel = document.createElement("section");
       nextPanel.className = "panel next-step-panel";
       nextPanel.setAttribute("aria-label", "Next step");
       nextPanel.style.marginTop = "1.5rem";
-      nextPanel.innerHTML =
+       nextPanel.innerHTML =
         '<h2>Next Step</h2>' +
         '<p>' + esc(nextStep.text) + '</p>' +
-        '<a class="btn btn-primary" href="' +
-        nextStep.href + '">' + esc(nextStep.label) + '</a>';
+        (nextStep.href
+          ? '<a class="btn btn-primary" href="' +
+            nextStep.href + '">' + esc(nextStep.label) + '</a>'
+          : '');
       main.appendChild(nextPanel);
     } 
     document.title = v.title + " | First 120 Days (demonstration)";
