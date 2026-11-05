@@ -791,6 +791,47 @@
     }
     renderChrome(v.nav);
     main.innerHTML = v.html;
+     // Contextual Next Step guidance
+    var nextStep = null;
+
+    if (p.name === "home") {
+      nextStep = {
+        text: "Review your current milestone and outstanding activities.",
+        href: "#/milestone/" + currentMilestone(state.role),
+        label: "View Current Milestone"
+      };
+    } else if (p.name === "milestone") {
+      nextStep = {
+        text: "Select an activity to review its requirements and record progress.",
+        href: "#/home",
+        label: "Return to Learning Pathway"
+      };
+     } else if (p.name === "activity") {
+      var activity = ACT[p.arg];
+      if (activity) {
+        var milestoneId = activity.kind === "coordinated"
+          ? activity.deliver.ms
+          : activity.ms;
+
+        nextStep = {
+          text: "Return to this activity's milestone to review remaining requirements and progress.",
+          href: "#/milestone/" + milestoneId,
+          label: "Return to Activity Milestone"
+        };
+      }
+    }
+    if (nextStep) {
+      var nextPanel = document.createElement("section");
+      nextPanel.className = "panel next-step-panel";
+      nextPanel.setAttribute("aria-label", "Next step");
+      nextPanel.style.marginTop = "1.5rem";
+      nextPanel.innerHTML =
+        '<h2>Next Step</h2>' +
+        '<p>' + esc(nextStep.text) + '</p>' +
+        '<a class="btn btn-primary" href="' +
+        nextStep.href + '">' + esc(nextStep.label) + '</a>';
+      main.appendChild(nextPanel);
+    } 
     document.title = v.title + " | First 120 Days (demonstration)";
     if (v.announce) { announce(v.announce); }
     if (!opts.focus && !opts.keepFocus && v.focus && document.getElementById(v.focus)) { var vf = document.getElementById(v.focus); vf.focus(); vf.scrollIntoView({ block: "start" }); firstRender = false; return; }
