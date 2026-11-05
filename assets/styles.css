@@ -553,7 +553,8 @@ dialog::backdrop { background: rgba(24, 35, 58, 0.45); }
     padding: 1.5rem 1.25rem;
     border-radius: 12px;
   }
-
+}
+  
 /* Experience Guide — enhanced five-step cards */
 .tour li {
   position: relative;
