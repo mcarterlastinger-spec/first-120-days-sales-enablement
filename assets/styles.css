@@ -630,3 +630,26 @@ dialog::backdrop { background: rgba(24, 35, 58, 0.45); }
 .page-head .guide-download {
   opacity: 1;
 }
+
+/* Experience Guide — accessible hero metadata */
+.guide-head .guide-meta,
+.guide-head .guide-meta li {
+  color: #e4f4f7 !important;
+  opacity: 1 !important;
+}
+
+.guide-head .guide-meta a,
+.guide-head .guide-meta a:visited {
+  color: #a9f4eb !important;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.guide-head .guide-meta a:hover {
+  color: #ffffff !important;
+}
+
+.guide-head .guide-meta a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
