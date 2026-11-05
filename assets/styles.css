@@ -600,3 +600,33 @@ dialog::backdrop { background: rgba(24, 35, 58, 0.45); }
     transform: none;
   }
 }
+
+/* Experience Guide — readable text and links on dark hero */
+.page-head .guide-download,
+.page-head .guide-meta,
+.page-head .guide-meta li,
+.page-head .guide-meta a {
+  color: #e4f4f7;
+}
+
+.page-head a:not(.btn) {
+  color: #a9f4eb;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1.5px;
+}
+
+.page-head a:not(.btn):hover {
+  color: #ffffff;
+  text-decoration-thickness: 2px;
+}
+
+.page-head a:not(.btn):focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.page-head .guide-meta,
+.page-head .guide-download {
+  opacity: 1;
+}
